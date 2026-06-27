@@ -1,0 +1,40 @@
+name: College ERP CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+
+    - name: Install Server Dependencies
+      run: |
+        cd server
+        npm ci
+
+    - name: Install Client Dependencies
+      run: |
+        cd client
+        npm ci
+
+    - name: Build Server
+      run: |
+        cd server
+        npx prisma generate
+        npm run build
+
+    - name: Build Client
+      run: |
+        cd client
+        npm run build
