@@ -1,0 +1,84 @@
+/* COMPONENT STYLES */
+
+/* --- Button --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-weight: 500;
+  border-radius: var(--radius-full); /* Pill shape for modern look */
+  padding: 0.75rem 1.5rem;
+  transition: all var(--transition-smooth);
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #fff;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-secondary);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-neutral-border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* --- Card --- */
+.card {
+  background: var(--color-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-neutral-border);
+  transition: all var(--transition-smooth);
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-premium);
+  transform: translateY(-4px);
+}
+
+/* --- AI Copilot Widget --- */
+.ai-copilot-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-premium);
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.ai-copilot-btn:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 25px 30px -5px rgba(16, 185, 129, 0.4);
+}
+
+.ai-copilot-icon {
+  width: 24px;
+  height: 24px;
+}

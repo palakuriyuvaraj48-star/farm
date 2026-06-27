@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Java
 *.class
 *.jar
@@ -182,3 +183,6 @@ htmlcov/
 *.tmp
 tmp/
 temp/
+=======
+node_modules
+>>>>>>> origin/main
