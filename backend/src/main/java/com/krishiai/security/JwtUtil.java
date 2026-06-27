@@ -1,7 +1,6 @@
 package com.krishiai.security;
 
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -16,10 +15,13 @@ public class JwtUtil {
 
     private final long expirationMs;
 
-    public JwtUtil(@Value("${krishiai.jwt.secret:change-me-please}") String secret,
-                   @Value("${krishiai.jwt.expiration-ms:86400000}") long expirationMs) {
-        // If secret is default placeholder, generate a key from it deterministically
-        this.secretKey = Keys.hmacShaKeyFor(secret.getBytes());
+    public JwtUtil(@Value("${jwt.secret:krishiai-development-jwt-secret-key-2026-please-change}") String secret,
+                   @Value("${jwt.expiration:86400000}") long expirationMs) {
+        byte[] keyBytes = secret.getBytes();
+        if (keyBytes.length < 32) {
+            keyBytes = String.format("%-32s", secret).getBytes();
+        }
+        this.secretKey = Keys.hmacShaKeyFor(keyBytes);
         this.expirationMs = expirationMs;
     }
 
@@ -35,7 +37,7 @@ public class JwtUtil {
                 .claim("role", role)
                 .setIssuedAt(now)
                 .setExpiration(exp)
-                .signWith(secretKey, SignatureAlgorithm.HS256)
+                .signWith(secretKey)
                 .compact();
     }
 }

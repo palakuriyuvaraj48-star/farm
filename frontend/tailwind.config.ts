@@ -13,7 +13,7 @@ const config: Config = {
         'primary-light': '#66BB6A',
         secondary: '#66BB6A',
         accent: '#FFB300',
-        background: '#F8FAF5',
+        background: '#F5F9F1',
         surface: '#FFFFFF',
         error: '#D32F2F',
         warning: '#F57C00',

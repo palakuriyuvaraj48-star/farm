@@ -1,6 +1,4 @@
-import type { Config } from 'next'
-
-const config: Config = {
+const config = {
   reactStrictMode: true,
   swcMinify: true,
   
@@ -25,7 +23,7 @@ const config: Config = {
         // API proxy during development
         {
           source: '/api/:path*',
-          destination: `${process.env.NEXT_PUBLIC_API_URL}/:path*`,
+          destination: `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api/v1'}/:path*`,
         },
       ],
     }
@@ -82,9 +80,6 @@ const config: Config = {
 
   // Build optimization
   productionBrowserSourceMaps: false,
-
-  // PWA support
-  manifest: '/manifest.json',
 
   // Performance
   onDemandEntries: {
